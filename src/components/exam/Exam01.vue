@@ -2,7 +2,7 @@
 <template>
     <div> <!--模板要求：根组件-->
         <h3>mint-ui组件库-toast</h3>
-        <!-- <van-button type="default">默认按钮</van-button> -->
+        <van-button type="default">默认按钮</van-button>
     </div>
 </template>
 
