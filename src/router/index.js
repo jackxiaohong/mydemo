@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Exam01 from '@/components/exam/Exam01.vue'
 import Login from "@/components/exam/Login.vue"
 import Product from '@/components/exam/Product.vue'
+import register from '@/components/exam/register.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -19,6 +20,10 @@ export default new Router({
     {
       path: '/Product',
       component: Product
+    },
+    {
+      path: '/register',
+      component: register
     },
   ]
 })
