@@ -2,7 +2,7 @@
     <div class="all">
         <div class="all_one">
             <mt-header >
-                <mt-button v-link="'/'" icon="back" slot="left"></mt-button>
+                <router-link to="'/'" icon="back" slot="left"></router-link>
             </mt-header>
             <span>小米账号-注册</span>
         </div>
@@ -17,16 +17,17 @@
         <!-- 2:密码输入框 -->
         <!-- <mt-field label="密码" placeholder="请输入密码" v-model="upwd"></mt-field>  -->
         <!-- 3.登录按钮 -->
-        <mt-button size="large" @click="login" id="register_button">立即注册</mt-button>
+        <mt-button size="large" @click="register" id="register_button">立即注册</mt-button>
         <div class="login_bottom">
-             <span>已阅读并同意<a href="#">用户协议</a></span>和<a href="#">隐私政策</a>
+             <span>已阅读并同意<Router-link to="">用户协议</Router-link></span>和<Router-link to="home">隐私政策</Router-link>
         </div>
-       <div class="second" @click="font_change">
-           <a href="#">简体</a><span>|</span><a href="#"><span>繁体</span></a><span>|</span><a href="#"><span>English</span></a><span>|</span><a href="#"><span>常见问题</span></a>
-            <!-- <router-link to="/register">sdfs</router-link> -->
+       <div  class="second"  @click="font_change"  >
+           <Router-link to="" data-id="false">简体</Router-link><span>|</span><Router-link to="" data-id="false">繁体</Router-link><span>|</span><Router-link to="" data-id="false">English</Router-link><span>|</span><Router-link to="" data-id="false">常见问题</Router-link>
        </div>
-        
-        
+      <!-- <ul>
+         <li v-for="(task,i) of tasks" :key="i">{{i+1}} - {{task}} <a href="javascript:;" @click="del(i)">x</a></li>
+      </ul> -->
+
     </div>
 </template>
 <script>
@@ -34,11 +35,13 @@ export default {
   data() {
     return {
       uname: "", //输入用户名
-      upwd: "" //输入密码
+      upwd: "", //输入密码
+      active:"second1",
+      tasks:["简体","繁体","English","常见问题"]
     };
   },
   methods: {
-    login() {
+    register() {
       // 功能:完成用户登录操作
       // 1.获取用户输入的用户名
       var uname = this.uname;
@@ -60,31 +63,52 @@ export default {
         return;
       }
       // 8.发送ajax请求
-      var url = "login";
+      var url = "register";
       var obj = { uname: uname, upwd: upwd };
       // 9.获取服务器返回结果
       this.axios.get(url, { params: obj }).then(res => {
         console.log(res.data.code);
         if (res.data.code < 0) {
           // 10.登录失败提示消息
-          this.$messagebox("消息", "用户名或者密码错误");
+          this.$messagebox("消息", "用户注册失败");
         } else {
           // 11.登录成功跳转 /product
-          this.$router.push("/Product");
+          // this.$router.push("/Product");
+          this.$messagebox("消息", "用户注册成功");
         }
       });
     },
     font_change (e){
-        if(e.target.nodeName=="A"){
-            console.log(e.target.style.colors)
-        e.target.style.color="#000";
-        }   
+        // console.log(e.target)
+        // if(e.target.nodeName=="A"){
+        // e.target.style.color="#000";
+        // e.target=true;
+        // }
+         console.log(e.target.dataset.id);
+        if(e.target){
+            e.target.dataset.id=true;
+         
+        }else{
+          e.target.dataset.id=false;
+      
+        }
+        if(e.target.dataset.id=true){
+           e.target.style.color="#000"
+          e.target.dataset.id=false;
+        }else{
+          e.target.style.color="#e1dad6";
+
+        }
     }
   }
 };
 </script>
 
 <style scoped>
+/* .second Router-link+Router-link:active{
+  color:red;
+} */
+
 .all {
   font-size: 2px;
   position: relative;
