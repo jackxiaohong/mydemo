@@ -1,17 +1,16 @@
 <template>
     <div class="all">
         <mt-header >
-            <mt-button v-link="'/'" icon="back" slot="left"></mt-button>
+            <!-- <mt-button v-link="'/'" icon="back" slot="left"></mt-button> -->
         </mt-header>
-        <img id="login" src="../../assets/login.png" alt="">
+        <img id="login_img" src="../../assets/login.png" alt="">
         <!-- <h4>Login.vue</h4> -->
-        <img src="" alt="">
+        <!-- <img src="" alt=""> -->
         <!-- 1:用户名输入框 -->
         <van-cell-group>
             <van-field v-model="uname" placeholder="请输入用户名" />
             <van-field v-model="upwd" placeholder="请输入密码" />
         </van-cell-group>
-
         <!-- <mt-field label="用户名" placeholder="请输入用户名" v-model="uname" :attr="{autofocus:true}"></mt-field>-->
         <!-- 2:密码输入框 -->
         <!-- <mt-field label="密码" placeholder="请输入密码" v-model="upwd"></mt-field>  -->
@@ -78,8 +77,9 @@ export default {
                     this.$messagebox("消息","用户名或者密码错误");
                 }else{
                       // 11.登录成功跳转 /product
-                      this.$router.push("/Product");
+                      this.$router.push("/register");
                 }
+                
             })
         }
     }
@@ -107,7 +107,7 @@ a{color:#e1dad6;}
     font-size: 5px;
 } */
 
-#login{
+#login_img{
     width: 110px;
     height: 40px;
     margin-bottom:20px;
