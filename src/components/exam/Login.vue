@@ -75,9 +75,16 @@ export default {
                 if(res.data.code<0){
                       // 10.登录失败提示消息
                     this.$messagebox("消息","用户名或者密码错误");
+<<<<<<< HEAD
                 }else{
                       // 11.登录成功跳转 /product
                       this.$router.push("/register");
+=======
+                // }else{
+                //       // 11.登录成功跳转 /product
+                //       this.$router.push("/Product");
+                // }
+>>>>>>> 4e2e4d81727b0c915b066243d8848cddb65f3e14
                 }
                 
             })

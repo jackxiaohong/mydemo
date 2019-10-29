@@ -26,6 +26,11 @@
        </div>
        
 
+=======
+       <div  class="second"  @click="font_change"  >
+           <Router-link to="" data-id="false">简体</Router-link><span>|</span><Router-link to="" data-id="false">繁体</Router-link><span>|</span><Router-link to="" data-id="false">English</Router-link><span>|</span><Router-link to="" data-id="false">常见问题</Router-link>
+       </div>
+>>>>>>> 4e2e4d81727b0c915b066243d8848cddb65f3e14
       <!-- <ul>
          <li v-for="(task,i) of tasks" :key="i">{{i+1}} - {{task}} <a href="javascript:;" @click="del(i)">x</a></li>
       </ul> -->
@@ -38,9 +43,13 @@ export default {
     return {
       uname: "", //输入用户名
       upwd: "", //输入密码
+<<<<<<< HEAD
       active: "second1",
       tasks: ["简体", "繁体", "English", "常见问题"],
-      currentIndex: 0
+      currentIndex: 0,
+      active:"second1",
+      tasks:["简体","繁体","English","常见问题"]
+>>>>>>> 4e2e4d81727b0c915b066243d8848cddb65f3e14
     };
   },
   methods: {
@@ -122,6 +131,29 @@ export default {
     //       this.currentIndex=index;
 
     // }
+    font_change (e){
+        // console.log(e.target)
+        // if(e.target.nodeName=="A"){
+        // e.target.style.color="#000";
+        // e.target=true;
+        // }
+         console.log(e.target.dataset.id);
+        if(e.target){
+            e.target.dataset.id=true;
+         
+        }else{
+          e.target.dataset.id=false;
+      
+        }
+        if(e.target.dataset.id=true){
+           e.target.style.color="#000"
+          e.target.dataset.id=false;
+        }else{
+          e.target.style.color="#e1dad6";
+
+        }
+    }
+
   }
 };
 </script>
@@ -130,11 +162,9 @@ export default {
 /* .second Router-link+Router-link:active{
   color:red;
 } */
-
 .on {
   color: red;
 }
-
 .all {
   font-size: 2px;
   position: relative;
