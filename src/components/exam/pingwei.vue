@@ -13,7 +13,7 @@
 <script>
 export default {
   data() {
-    return {
+    return {  
       items: [
         {
           title: "发现好货第三十六期",
@@ -58,13 +58,13 @@ export default {
 
 .pingwei_title {
   font-size: 14px;
-  margin-bottom: 3px;
-  margin-top: 13px;
+  padding-bottom: 3px;
+  padding-top: 13px;
   color: #000;
 }
 .pingwei_detail {
   color: #bfbfbf;
   font-size: 8px;
-  margin-bottom: 13px;
+  padding-bottom: 13px;
 }
 </style>

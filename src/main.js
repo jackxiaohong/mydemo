@@ -4,6 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+
+//引入better-scroll
+import BScroll from 'better-scroll'
+
 //引入第三方的组件库mint-ui
 //完整引入mint-ui组件库中所有组件
 import MintUI from "mint-ui"

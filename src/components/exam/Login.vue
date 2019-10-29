@@ -17,16 +17,20 @@
         <!-- 3.登录按钮 -->
         <mt-button size="large" @click="login">登录</mt-button>
         <div class="login_bottom">
-             <span><a href="#">注册新账号></a></span><span>|</span><a href="#">忘记密码></a>
+             <a href="#">注册新账号></a><span>|</span><a href="#">忘记密码></a>
         </div>
        <div class="second">
-           <span>——————————您还可以用以下方式登录——————————</span>
+         <ul class="second_one">
+           <li class="a1"></li>
+           <li>您还可以用以下方式登录</li>
+           <li class="a1"></li>
+         </ul>
+           <!-- <span>——————————您还可以用以下方式登录——————————</span> -->
            <div class="second_msg">
-               <a href="#">
+               <a href="#" class="message_login">
                    <img src="../../assets/login_phone.png" alt="">
                    <span> 短信验证码登录</span>
                </a>
-               
            </div>
         
 
@@ -37,75 +41,68 @@
 </template>
 <script>
 export default {
-    data(){
-        return{
-            uname:"",//输入用户名
-            upwd:"" //输入密码
-        }
-    },
-    methods:{
-        login(){
-            // 功能:完成用户登录操作
-            // 1.获取用户输入的用户名
-            var uname=this.uname;
-            // 2.获取用户输入密码
-            var upwd=this.upwd;
-            // console.log(uname+"_"+upwd)
-            // 3.创建正则表达式 3-12字母数字,i忽略大小写
-            var reg = /^[a-z0-9]{3,12}$/i;
-            // 4.验证用户名
-            if(reg.test(uname)==false){
-            // 5.验证不成功，提示消息
-            this.$messagebox("用户名格式不正确");
-            return;
-            }
-            // 6.验证密码
-            if(reg.test(upwd)==false){
-          
-            // 7.验证不成功，提示消息
-              this.$messagebox("用户密码格式不正确");
-              return;
-            }
-            // 8.发送ajax请求
-            var url = "login";
-            var obj = {uname:uname,upwd:upwd};
-              // 9.获取服务器返回结果
-            this.axios.get(url,{params:obj}).then(res=>{
-                console.log(res.data.code);
-                if(res.data.code<0){
-                      // 10.登录失败提示消息
-                    this.$messagebox("消息","用户名或者密码错误");
-<<<<<<< HEAD
-                }else{
-                      // 11.登录成功跳转 /product
-                      this.$router.push("/register");
-=======
-                // }else{
-                //       // 11.登录成功跳转 /product
-                //       this.$router.push("/Product");
-                // }
->>>>>>> 4e2e4d81727b0c915b066243d8848cddb65f3e14
-                }
-                
-            })
-        }
+data() {
+    return {
+      uname: "", //输入用户名
+      upwd: "" //输入密码
+    };
+  },
+  methods: {
+    login() {
+      // 功能:完成用户登录操作
+      // 1.获取用户输入的用户名
+      var uname = this.uname;
+      // 2.获取用户输入密码
+      var upwd = this.upwd;
+      // console.log(uname+"_"+upwd)
+      // 3.创建正则表达式 3-12字母数字,i忽略大小写
+      var reg = /^[a-z0-9]{3,12}$/i;
+      // 4.验证用户名
+      if (reg.test(uname) == false) {
+        // 5.验证不成功，提示消息
+        this.$messagebox("用户名格式不正确");
+        return;
+      }
+      // 6.验证密码
+      if (reg.test(upwd) == false) {
+        // 7.验证不成功，提示消息
+        this.$messagebox("用户密码格式不正确");
+        return;
+      }
+      // 8.发送ajax请求
+      var url = "login";
+      var obj = { uname: uname, upwd: upwd };
+      // 9.获取服务器返回结果
+      this.axios.get(url, { params: obj }).then(res => {
+        console.log(res.data.code);
+        if (res.data.code < 0) {
+          // 10.登录失败提示消息
+          this.$messagebox("消息", "用户名或者密码错误");
+        } else {
+          // 11.登录成功跳转 /product
+          this.$router.push("/register")
+           }
+      });
     }
-}
+  }
+};
 </script>
 
 <style scoped>
-.all{
-    font-size: 2px;
-    position: relative;
-    top:-27px;
-    color:#e1dad6;
+.all {
+  font-size: 2px;
+  position: relative;
+  top: -27px;
+  color: #e1dad6;
 }
-a{color:#e1dad6;}
-.mint-cell-wrapper{
-    font-size: 5px !important
+a {
+  color: #e1dad6;
+}
+.mint-cell-wrapper {
+  font-size: 5px !important;
 }
 .van-cell {
-     font-size: 9px;
+  font-size: 9px;
 }
 /* .mint-cell-title{
     font-size: 5px;
@@ -114,62 +111,103 @@ a{color:#e1dad6;}
     font-size: 5px;
 } */
 
-#login_img{
-    width: 110px;
-    height: 40px;
-    margin-bottom:20px;
+#login_img {
+  width: 110px;
+  height: 40px;
+  margin-bottom: 20px;
 }
-.mint-header{
-    background-color:#fff;
-    color: #d8cfc7;
+.mint-header {
+  background-color: #fff;
+  color: #d8cfc7;
+}
+.login_bottom {
+  padding-top: 20px;
+  width: 150px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  color: #beaa99;
 }
 .login_bottom{
-    padding-top:20px;
-    width:150px;
-    height:100px;
-    display: flex;
-    justify-content: space-between;
-    margin:0 auto;
-    color:#beaa99;
+  display: flex;
+  width: 200px;
 }
 .login_bottom a{
-    color:#beaa99;
+  color: #beaa99;
 }
-.mint-button--default{
- background:#d8cfc7;
+.mint-button--default {
+  background: #d8cfc7;
 }
-.mint-button{
-    color:#fff;
+.mint-button {
+  color: #fff;
 }
-.second{
-    position: relative;
-    top:170px;
+.second {
+  /* position: relative;
+  top: 170px; */
+  margin: 0 auto;
+  width: 375px;
 }
-.second span{
-    display: block;
-}
-.second_msg{
-    margin-top: 10px;
-    width: 90px;
-    display: flex;
-       flex-direction:column;
-       margin: 0 auto;
 
+.second_one{
+  display: flex;
+  flex-direction: row;
+  width: 260px;
+  margin: 0 auto;
 }
-.second_msg img{
-    width: 30px;
-    height: 30px;
-    /* text-align: center; */
-    margin-left:26px;
-    margin-top:20px;
-    /* background: #e1dad6; */
-    /* background-color: #e1dad6; */
+/* .second_one:first-child{
+  border-bottom: 1px solid red;
+  margin-left: 10px;
+  width:;
+} */
+.second_one .a1{
+   border-bottom: 1px solid #d8cfc7;
+  width: 50px;
+  height: 9px;
 }
-.second_msg span{
-    margin-top: 10px;
-    margin-left: 10px;
-    width: 100px;
+.second_one :nth-child(2){
+  padding-left: 10px;
+  padding-right: 10px;
 }
+.second span {
+  display: block;
+}
+.second_msg {
+  /* margin-top: 10px; */
+  width: 200px;
+  /* display: flex;
+  flex-direction: column; */
+  margin: 0 auto;
+  /* text-align: center;
+  justify-content: center; */
+  /* align-items:center; */
+  padding-top: 30px;
+}
+.second_msg img {
+  width: 30px;
+  height: 30px;
+  /* text-align: center; */
+  /* margin-left: 26px;
+  margin-top: 20px; */
+  /* background: #e1dad6; */
+  /* background-color: #e1dad6; */
+}
+.second_msg span {
+  width: 200px;
+   padding-top: 25px;
+}
+.message_login{
+  display: flex;
+  flex-direction:column;
+  /* text-align: center; */
+  /* margin-left: -15px; */
+  /* justify-content: center; */
+  align-items: center;
+}
+.message_login span{
+  /* margin-left: -10px; */
+}
+
 
 </style>
 
